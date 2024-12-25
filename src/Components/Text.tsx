@@ -2,7 +2,7 @@ import Typewriter from "typewriter-effect";
 
 const TextPart = () => {
   return (
-    <div className="h-screen w-screen text-roboto  max-h-screen p-10 m-0   text-white  flex flex-col justify-center items-start">
+    <div className=" col-span-0.5 h-[500px] w-screen text-roboto  p-10 m-0   text-white  flex flex-col justify-center items-start">
       <h1
         className="lg:text-9xl text-5xl"
         style={{ fontFamily: "Pool", WebkitTextStroke: "1px black" }}

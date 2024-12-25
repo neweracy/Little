@@ -48,7 +48,7 @@ function Box(props: BoxProps) {
 
 function Render() {
   return (
-    <Canvas shadows dpr={[5, 5]} className=" absolute lg:top-28 h-[200dvh] ">
+    <Canvas shadows dpr={[5, 5]} className=" absolute  lg:top-28 h-[200dvh] ">
       <ambientLight intensity={2} />
       <spotLight
         position={[1, 6, 1.5]}
@@ -84,7 +84,7 @@ function Render() {
         blur={0.2}
       />
       <pointLight position={[-10, -9, -10]} decay={0} intensity={Math.PI} />
-      <Model  scale={window.innerWidth > 1024 ? [1.8, 1.8, 1.8] : [1.8, 1.8, 1.8]} />
+      <Model  scale={window.innerWidth > 1024 ? [1.8, 1.8, 1.8] : 1.8} />
      
     </Canvas>
   );
