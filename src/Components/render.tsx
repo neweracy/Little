@@ -1,50 +1,6 @@
-import { useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import { ContactShadows, ScrollControls } from "@react-three/drei";
-import { useSpring, animated, config } from "@react-spring/three";
-import Model from '../../public/Model.tsx'
-
-interface BoxProps {
-  position?: [number, number, number];
-}
-
-
-function Box(props: BoxProps) {
-  // This reference will give us direct access to the mesh
-  const meshRef = useRef<THREE.Mesh>(null);
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta;
-    }
-  });
-
-  const { scale } = useSpring<{ scale: number }>({
-    scale: active ? 1.5 : 1,
-    config: config.wobbly,
-  });
-  // Return view, these are regular three.js elements expressed in JSX
-  return (
-    <animated.mesh
-      {...props}
-      ref={meshRef}
-      scale={scale}
-      onClick={() => setActive(!active)}
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-      castShadow
-    >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-    </animated.mesh>
-  );
-}
-
-
+import { Canvas } from "@react-three/fiber";
+import { ContactShadows } from "@react-three/drei";
+import Model from "../../public/Model.tsx";
 
 function Render() {
   return (
@@ -84,8 +40,7 @@ function Render() {
         blur={0.2}
       />
       <pointLight position={[-10, -9, -10]} decay={0} intensity={Math.PI} />
-      <Model  scale={window.innerWidth > 1024 ? [1.8, 1.8, 1.8] : 1.8} />
-     
+      <Model scale={window.innerWidth > 1024 ? [1.8, 1.8, 1.8] : 1.8} />
     </Canvas>
   );
 }
