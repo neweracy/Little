@@ -10,7 +10,7 @@ const TextPart = () => {
         Cute Deadpool
       </h1>
 
-      <div className="text-4xl lg:mt-8 lg:ml-3" style={{ color: "#ff0000" }}>
+      <div className="text-4xl lg:text-5xl lg:mt-8 lg:ml-3" style={{ color: "#ff0000" }}>
         <Typewriter
           options={{
             strings: ["Neweracy", "Little Pool"],
